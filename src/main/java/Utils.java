@@ -1,11 +1,16 @@
 import jakarta.servlet.http.HttpServletRequest;
 
-public class Utils {
+import java.net.URLEncoder;
 
-    public static String parseZoneId(HttpServletRequest request) {
+public class Utils {
+    private static final String DEFAULT_TIME_ZONE = "UTC";
+
+    public static String parseTimeZone(HttpServletRequest request) {
         if (request.getParameterMap().containsKey("timezone")) {
-            return request.getParameter("timezone");
+            String tz = request.getParameter("timezone");
+            if (tz == null || tz.isEmpty()) return DEFAULT_TIME_ZONE;
+            return URLEncoder.encode(tz); //щоб не писати %2B замість "+" в URL
         }
-        return "UTC";
+        return DEFAULT_TIME_ZONE;
     }
 }

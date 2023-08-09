@@ -19,9 +19,9 @@ public class TimeServlet extends HttpServlet {
         resp.setContentType("text/html;charset=UTF-8");
         resp.getWriter().write("<h1>Time</h1>");
 
-        String zoneId = Utils.parseZoneId(req);
+        String timezone = Utils.parseTimeZone(req);
 
-        String currentTime = ZonedDateTime.now(ZoneId.of(zoneId))
+        String currentTime = ZonedDateTime.now(ZoneId.of(timezone))
                 .format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss z"));
 
         resp.getWriter().write(currentTime);

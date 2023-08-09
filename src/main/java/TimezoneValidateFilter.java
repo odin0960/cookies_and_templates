@@ -18,7 +18,7 @@ public class TimezoneValidateFilter extends HttpFilter {
                             FilterChain chain)
             throws IOException, ServletException {
 
-        String timezone = Utils.parseZoneId(req);
+        String timezone = Utils.parseTimeZone(req);
 
         try {
             ZoneId.of(timezone);
