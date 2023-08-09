@@ -18,7 +18,6 @@ public class TimeServlet extends HttpServlet {
         log("reg type: "+req.getMethod());
         resp.setContentType("text/html;charset=UTF-8");
         resp.getWriter().write("<h1>Time</h1>");
-//        resp.getWriter().write("reg type: "+req.getMethod());
 
         String zoneId = Utils.parseZoneId(req);
 
@@ -29,12 +28,5 @@ public class TimeServlet extends HttpServlet {
 
         resp.getWriter().close();
     }
-
-//    private String parseZoneId(HttpServletRequest request) {
-//        if (request.getParameterMap().containsKey("timezone")) {
-//            return request.getParameter("timezone");
-//        }
-//        return "UTC";
-//    }
 }
 
