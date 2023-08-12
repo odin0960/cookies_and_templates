@@ -1,2 +1,2 @@
-# servlet_hw8
-module_8_servlets_HW
+# cookies_and_templates
+module_9_cookies_and_templates_HW
