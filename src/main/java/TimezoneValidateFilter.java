@@ -14,7 +14,7 @@ public class TimezoneValidateFilter extends HttpFilter {
 
     @Override
     protected void doFilter(HttpServletRequest req,
-                            HttpServletResponse res,
+                            HttpServletResponse resp,
                             FilterChain chain)
             throws IOException, ServletException {
 
@@ -22,13 +22,13 @@ public class TimezoneValidateFilter extends HttpFilter {
 
         try {
             ZoneId.of(timezone);
-            chain.doFilter(req, res);
+            chain.doFilter(req, resp);
         } catch (DateTimeException e) {
-            res.setStatus(404);
+            resp.setStatus(404);
 
-            res.setContentType("application/json");
-            res.getWriter().write("{\"Error\": \"Invalid timezone\"}");
-            res.getWriter().close();
+            resp.setContentType("application/json");
+            resp.getWriter().write("{\"Error\": \"Invalid timezone\"}");
+            resp.getWriter().close();
         }
     }
 }
